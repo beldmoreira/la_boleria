@@ -1,0 +1,10 @@
+#!/bin/bash
+
+DATABASE=la_boleria
+
+echo "Criando banco de dados..." &&
+sudo su -c "psql -c \"CREATE DATABASE $DATABASE\";" postgres;
+
+echo "Criando tabelas..." &&
+sudo su -c "psql -d $DATABASE -f tables.sql" postgres;
+
