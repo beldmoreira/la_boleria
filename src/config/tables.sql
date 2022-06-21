@@ -1,27 +1,27 @@
-CREATE TABLE "public.clients" (
+CREATE TABLE "clients" (
 	"id" serial NOT NULL,
-	"name" serial(255) NOT NULL,
-	"address" serial(255) NOT NULL,
-	"phone" serial(255) NOT NULL,
+	"name" varchar(255) NOT NULL,
+	"address" varchar(255) NOT NULL,
+	"phone" varchar(255) NOT NULL,
 	CONSTRAINT "clients_pk" PRIMARY KEY ("id")
 );
 
-CREATE TABLE "public.cakes" (
+CREATE TABLE "cakes" (
 	"id" serial NOT NULL,
-	"name" serial(255) NOT NULL UNIQUE,
+	"name" varchar(255) NOT NULL UNIQUE,
 	"price" numeric NOT NULL,
 	"image" varchar(255) NOT NULL,
-	"description" TEXT(255),
+	"description" text,
 	CONSTRAINT "cakes_pk" PRIMARY KEY ("id")
 );
 
-CREATE TABLE "public.orders" (
+CREATE TABLE "orders" (
 	"id" serial NOT NULL,
-	"clientId" serial NOT NULL,
-	"cakeId" serial NOT NULL,
-	"quantity" serial NOT NULL,
-	"createdAt" serial NOT NULL,
-	"totalPrice" serial NOT NULL,
+	"clientId" integer NOT NULL REFERENCES clients(id),
+	"cakeId" integer NOT NULL REFERENCES cakes(id),
+	"quantity" integer NOT NULL,
+	"createdAt" timestamp with time zone NOT NULL,
+	"totalPrice" numeric NOT NULL,
 	CONSTRAINT "orders_pk" PRIMARY KEY ("id")
 );
 
