@@ -1,9 +1,10 @@
 import Joi from "joi";
 
-export const PostCakes = Joi.object({
+export const cakesSchemas = Joi.object({
     name: Joi
     .string()
     .pattern(/^\w{2,}$/)
+    .min(2)
     .required(),
     price:Joi
     .number()
@@ -16,7 +17,6 @@ export const PostCakes = Joi.object({
     .uri()
     .required()
 });
-
 
 
 
