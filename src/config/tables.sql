@@ -20,7 +20,7 @@ CREATE TABLE "orders" (
 	"clientId" integer NOT NULL REFERENCES clients(id),
 	"cakeId" integer NOT NULL REFERENCES cakes(id),
 	"quantity" integer NOT NULL,
-	"createdAt" timestamp with time zone NOT NULL,
+	"createdAt" timestamp with time zone NOT NULL DEFAULT NOW(),
 	"totalPrice" numeric NOT NULL,
 	CONSTRAINT "orders_pk" PRIMARY KEY ("id")
 );
